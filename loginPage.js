@@ -1,23 +1,26 @@
-'use strict';
+const userForm = new UserForm();
 
-//Формы авторизации, регистрации
-const userFormOne = new UserForm();
-userFormOne.loginFormCallback = (data) => {
+
+userForm.loginFormCallback = function(data) {
     ApiConnector.login(data, (response) => {
-        if(response.success) {
-            location.reload();
+        if (response.success) {
+            
+            location.reload(); 
         } else {
-            userFormOne.setLoginErrorMessage(response.error);
+            
+            alert(response.error || "Ошибка авторизации");
         }
-    })
+    });
 };
 
-userFormOne.registerFormCallback = (data) => {
+
+userForm.registerFormCallback = function(data) {
     ApiConnector.register(data, (response) => {
-        if(response.success) {
-            location.reload();
+        if (response.success) {
+            
+            location.reload(); 
         } else {
-            userFormOne.setRegisterErrorMessage(response.error);
+            alert(response.error || "Ошибка регистрации");
         }
-    })
+    });
 };

@@ -1,7 +1,7 @@
 'use strict';
 //Личный кабинет
 
-//1. Выход из личного кабинета (сделано)
+//1. Выход из личного кабинета 
 const logoutButtonOne = new LogoutButton();
 logoutButtonOne.action = () => {
     ApiConnector.logout((response) => {
@@ -11,14 +11,14 @@ logoutButtonOne.action = () => {
     });
 };
 
-//2.Получение информации о пользователе (сделано)
+//2.Получение информации о пользователе 
 ApiConnector.current((response) => {
     if(response.success) {
         ProfileWidget.showProfile(response.data);
     }
 });
 
-//3.Получение текущих курсов валюты (сделано)
+//3.Получение текущих курсов валюты 
 const ratesBoardOne = new RatesBoard();
 const period = () => {
     ApiConnector.getStocks(response => {
@@ -32,7 +32,7 @@ period();
 setInterval(period, 60000);
 
 //4. Операции с деньгами
-//4.1 Пополнение баланса (сделано)
+//4.1 Пополнение баланса 
 const moneyManagerOne = new MoneyManager();
 moneyManagerOne.addMoneyCallback = (data) => {
     ApiConnector.addMoney(data, (response) => {
@@ -45,7 +45,7 @@ moneyManagerOne.addMoneyCallback = (data) => {
     })
 }
 
-//4.2 конвертирование валюты (сделано)
+//4.2 конвертирование валюты 
 moneyManagerOne.conversionMoneyCallback = (data) => {
     ApiConnector.convertMoney(data, (response) => {
         if(response.success) {
@@ -57,7 +57,7 @@ moneyManagerOne.conversionMoneyCallback = (data) => {
     })
 };
 
-//4.3 перевод валюты (сделано)
+//4.3 перевод валюты 
 moneyManagerOne.sendMoneyCallback = (data) => {
     ApiConnector.transferMoney(data, (response) => {
         if(response.success) {
@@ -73,7 +73,7 @@ moneyManagerOne.sendMoneyCallback = (data) => {
 //5. Работа с избранным
 const FavoritesWidgetOne = new FavoritesWidget();
 
-//5.1 Запрос списка избранного: (сделано)
+//5.1 Запрос списка избранного: 
 ApiConnector.getFavorites(response => {
     if(response.success) {
         FavoritesWidgetOne.clearTable();
@@ -82,7 +82,7 @@ ApiConnector.getFavorites(response => {
     }
 });
 
-//5.2 Добавление пользователя в список избранных: (сделано)
+//5.2 Добавление пользователя в список избранных: 
 FavoritesWidgetOne.addUserCallback = (data) => {
     ApiConnector.addUserToFavorites(data, (response) => {
         if(response.success) {

@@ -71,19 +71,19 @@ moneyManagerOne.sendMoneyCallback = (data) => {
 
 
 //5. Работа с избранным
-const FavoritesWidgetOne = new FavoritesWidget();
+const favoritesWidgetOne = new FavoritesWidget();
 
 //5.1 Запрос списка избранного: 
 ApiConnector.getFavorites(response => {
     if(response.success) {
-        FavoritesWidgetOne.clearTable();
-        FavoritesWidgetOne.fillTable(response.data);
+        favoritesWidgetOne.clearTable();
+        favoritesWidgetOne.fillTable(response.data);
         moneyManagerOne.updateUsersList(response.data);
     }
 });
 
 //5.2 Добавление пользователя в список избранных: 
-FavoritesWidgetOne.addUserCallback = (data) => {
+favoritesWidgetOne.addUserCallback = (data) => {
     ApiConnector.addUserToFavorites(data, (response) => {
         if(response.success) {
             FavoritesWidgetOne.clearTable();
@@ -97,15 +97,15 @@ FavoritesWidgetOne.addUserCallback = (data) => {
 }
 
 //5.3 Удаление пользователя из списка избранных: 
-FavoritesWidgetOne.removeUserCallback = (data) => {
+favoritesWidgetOne.removeUserCallback = (data) => {
     ApiConnector.removeUserFromFavorites(data, (response) => {
         if(response.success) {
-            FavoritesWidgetOne.clearTable();
-            FavoritesWidgetOne.fillTable(response.data);
+            favoritesWidgetOne.clearTable();
+            favoritesWidgetOne.fillTable(response.data);
             moneyManagerOne.updateUsersList(response.data);
-            FavoritesWidgetOne.setMessage(response.success, 'Пользователь удален из списка избранных');
+            favoritesWidgetOne.setMessage(response.success, 'Пользователь удален из списка избранных');
         } else {
-            FavoritesWidgetOne.setMessage(response.success, response.error);
+            favoritesWidgetOne.setMessage(response.success, response.error);
         }
     })
 }

@@ -8,7 +8,7 @@ userForm.loginFormCallback = function(data) {
             location.reload(); 
         } else {
             
-            alert(response.error || "Ошибка авторизации");
+            console.log(response.error || "Ошибка авторизации");
         }
     });
 };
@@ -20,7 +20,7 @@ userForm.registerFormCallback = function(data) {
             
             location.reload(); 
         } else {
-            alert(response.error || "Ошибка регистрации");
+            console.log(response.error || "Ошибка регистрации");
         }
     });
 };

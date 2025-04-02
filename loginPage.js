@@ -1,23 +1,25 @@
 const userForm = new UserForm();
 
-userForm.loginFormCallback = function(data) {
+// Обработчик для формы входа
+userForm.loginFormCallback = (data) => {
     ApiConnector.login(data, (response) => {
         if (response.success) {
             location.reload(); 
         } else {
-            const message = "Ошибка авторизации";
-            this.setLoginErrorMessage(message); 
+            // Используем сообщение от сервера
+            this.setLoginErrorMessage(response.error || "Ошибка авторизации");
         }
     });
 };
 
-userForm.registerFormCallback = function(data) {
+// Обработчик для формы регистрации
+userForm.registerFormCallback = (data) => {
     ApiConnector.register(data, (response) => {
         if (response.success) {
             location.reload(); 
         } else {
-            const message = "Ошибка регистрации";
-            this.setRegisterErrorMessage(message); 
+            // Используем сообщение от сервера
+            this.setRegisterErrorMessage(response.error || "Ошибка регистрации");
         }
     });
 };
